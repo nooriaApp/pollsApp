@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Poll Test Project</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+</head>
+<body>
+	<div id= "container">
+		<header>
+			<h1>iMMAP PRACTICAL TEST</h1>
+			<h3>Poll Application </br> Using Django Framework</h3>
+			<p><a href = "http://trustblog.herokuapp.com/" target="blank" >Nooria Esmaelzade</a></p>
+		</header>
+		<div id ="content">
+			{% if latest_question_list %}
+			<h2>Select The question You Want To Vot  For </h2>
+		
+			{% for question in latest_question_list %}
+				<h4><a href ="{% url 'polls:detail' question.id %}"> 
+					{{question.question_text}}
+					</a>
+				</h4>
+			
+			{% endfor %}
+			{% else %}
+				<p> No Polls re available. </p>
+			{% endif %}
+		</div>
+	</div>
+</body>
+</html>
+
+
+
